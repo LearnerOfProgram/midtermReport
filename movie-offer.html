@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>特惠方案</title>
+	<link rel=stylesheet type="text/css" href="css/movie-offer.css">
+	<script type="text/javascript" src="http://keleyi.com/keleyi/pmedia/jquery-1.9.1.min.js"></script>
+
+	<script>
+		//感應[至頂按鈕]
+		document.getElementById('rollButton').click(function()
+		{
+		        var elmnt = document.getElementsByClassName("header")[0];
+    			elmnt.scrollLeft = 0;
+    			elmnt.scrollTop = 0;
+    			/**/
+		});
+	</script>
+	<script type="text/javascript">
+	//更多好康那區的動畫
+	$(function()
+	{
+		// 用來顯示大圖片用
+		var $showImage = $('.mdPic');
+
+		// 當滑鼠移到 .mdBut中的某個超連結
+		$('.mdBut a').mouseover(function()
+		{
+		// 把.mdPic的src改成被移到的超連結的位置
+			$showImage.attr('src', $(this).attr('href'));
+		}).click(function(){
+			// 如果超連結被點擊時, 取消連結動作
+				return false; });
+	});
+	</script>
+</head>
+<body>
+	<div class="wrap">
+		<div class="header">
+			<div class="logo">
+			<a href="index.html">
+				<img src="img/LogoPic.png" alt="">
+			</a>
+			<h1 style="display: none;">六角電影院 優惠頁面</h1>
+			</div>
+
+			<div class="functionBar">
+			<ul>
+				<li> <a id="level_1" href="page_timetable.html">時刻表</a> </li>
+				<li> <a id="level_1" href="#" style="border-bottom: 5px solid #F47C7C;">優惠方案</a> </li>
+				<li> <a id="level_1" href="">電影列表</a>
+					<ul>
+						<li> <a id="level_2" href="movie-all-now.html">現正熱映</a> </li>
+						<li> <a id="level_2" href="movie-all-future.html">即將上映</a> </li>
+					</ul>
+				</li>
+			</ul>
+			</div>
+			<a href="" id="rollButton">
+				<img id="rollPic" src="img/arrowUp.png" alt=""><br>
+				<span id="rollCon">UP</span>
+			</a>
+		</div>
+
+		<div class="MoreDisArea">
+			<a href="">
+				<img src="https://placem.at/things?w=1017&h=336&random=5" class="mdPic" alt="">
+			</a>
+			<div class="mdBut">
+				<a href="https://placem.at/things?w=1017&h=336&random=1" class="program" id="program1" style="border-radius: 0 25px 0 0;">電影新朋友</a>
+				<a href="https://placem.at/things?w=1017&h=336&random=2" class="program" id="program2">情人節特惠</a>
+				<a href="https://placem.at/things?w=1017&h=336&random=3" class="program" id="program3">當月壽星特惠</a>
+				<a href="https://placem.at/things?w=1017&h=336&random=4" class="program" style="border-radius: 0 0 25px 0;" id="program4">本周假日特惠</a>
+			</div>
+			<div class="clear"></div>
+		</div>
+
+
+		<div class="offer-introduce">
+			<img src="https://placem.at/things?w=900&h=625">
+		</div>
+
+		<div class="sheet">
+			<div class="sheet-basic-info">
+				<span class="sbiTitle">基本資料</span>：<br>
+				<span id="itemCss">姓名：</span>
+				<input class="textarea" type="text" name=""><br>
+				<span id="itemCss">電話：</span>
+				<input class="textarea" type="text" name=""><br>
+			</div>
+			<div class="sheet-filter">
+				<span class="sbiTitle">篩選條件</span>：<br>
+				<span id="itemCss">影城：</span>
+				<select name="theater" id="itemCss">
+　					<option value="one">台北影城1</option>
+　					<option value="two">台北影城2</option>
+　					<option value="three">台北影城3</option>
+　					<option value="four">高雄影城1</option>
+					<option value="five">高雄影城2</option>
+				</select><br>
+				<span id="itemCss">電影：</span>
+				<select name="movie" id="itemCss">
+　					<option value="one">寶貝老闆</option>
+　					<option value="two">羅根</option>
+　					<option value="three">美女與野獸</option>
+　					<option value="four">聲之形</option>
+					<option value="five">我和我的冠軍女兒</option>
+				</select><br>
+				<span id="itemCss">場次：</span>
+				<select name="screen" id="itemCss">
+　					<option value="one">9:00</option>
+　					<option value="two">12:00</option>
+　					<option value="three">14:00</option>
+　					<option value="four">16:00</option>
+					<option value="five">18:00</option>
+				</select><br>
+			</div>
+			<a href="movie-offer-end.html"><div class="send-botton">
+				送出資訊
+			</div></a>
+			<div class="clear"></div>
+		</div>
+
+		<div class="footer">
+		<div class="recruitment">
+			<h3>人才招募</h3>
+			<table>
+					<tr>
+						<td id="demandCateName">線上</td>
+						<td id="demandCateCon">
+							<ul>
+								<li>前端工程師: 熟悉CSS / JavaScript / AJAX ...etc</li>
+								<li>後端工程師: API / 資料庫語言 ...etc</li>
+							</ul>
+						</td>
+					</tr>
+
+					<tr>
+						<td id="demandCateName">線下</td>
+						<td id="demandCateCon">
+							擴大徵才，誠邀各界高階幕僚、行銷、經營管理相關領域之將相人才加入
+						</td>
+					</tr>
+			</table>
+			<div id="btn_moreInfo"><a href="">更多資訊</a></div>
+		</div>
+
+		<div class="copyright">
+			<h3>版權宣告</h3>
+			<p>
+				Copyright © 2017 六角電影院 Inc. All rights reserved.<br>
+				其他電影宣傳品與簡介，屬原電影發行商所有
+			</p>
+		</div>
+
+		<div class="outLink">
+			<h3>外部連結</h3>
+
+			<div class="LinkContainer">
+				<a href=""  class="control"> <div id="trapezoid_1"></div> </a>
+				<a href="http://www.ticket.com.tw/" target="_blank"  class="control">
+					<div id="trapezoid_2">年代<br>售票</div>
+				</a>
+				<a href=""  class="control"> <div id="trapezoid_3"></div> </a>
+				<div class="clear"></div>
+			</div>
+
+			<div class="LinkContainer">
+				<a href=""  class="control"> <div id="trapezoid_1"></div> </a>
+				<a href="http://tickets.books.com.tw/index/" target="_blank"  class="control">
+					<div id="trapezoid_2">博客來<br>售票</div>
+				</a>
+				<a href=""  class="control"> <div id="trapezoid_3"></div> </a>
+				<div class="clear"></div>
+			</div>
+
+		</div>
+			<div class="clear"></div>
+	</div>
+
+
+</body>
+</html>

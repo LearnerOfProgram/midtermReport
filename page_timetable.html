@@ -1,0 +1,363 @@
+	<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>今日時刻表</title>
+	<link rel=stylesheet type="text/css" href="css/all.css">
+	<script type="text/javascript" src="http://keleyi.com/keleyi/pmedia/jquery-1.9.1.min.js"></script>
+	<script>
+		//感應[至頂按鈕]
+		document.getElementById('rollButton').click(function()
+		{
+		        var elmnt = document.getElementsByClassName("header")[0];
+    			elmnt.scrollLeft = 0;
+    			elmnt.scrollTop = 0;
+    			/**/
+		});
+	</script>
+	<script type="text/javascript">
+	//切換不同影城的電影時刻表
+	$(function()
+	{
+		// 用來顯示大圖片用
+		//var $showImage = $('.mdPic');
+		// 當滑鼠移到 .area-opt-bottom中的某個超連結
+		$('.area-opt-bottom').mouseover(function()
+		{
+			///先感應是哪個影城被按
+			var branchName = this.id;  //e.g. taipei1
+			var picPath="img/"+branchName+"/";
+
+			//由於未接資料庫 先暫時用這種方式顯示資料
+			var movieName = ["","","",""]; //儲存片名陣列
+			switch(branchName) {
+    			case "taipei1":
+        			movieName=["目擊者","當他們認真編織時","聲之形","我和我的冠軍女兒"];
+        			break;
+    			case "taipei2":
+        			movieName=["寶貝老闆","羅根","目擊者","美女與野獸"];
+        			break;
+        		case "taipei3":
+        			movieName=["寶貝老闆","羅根","當他們認真編織時","聲之形"];
+        			break;
+        		case "kaohsiung1":
+        			movieName=["羅根","美女與野獸","我和我的冠軍女兒","寶貝老闆"];
+        			break;
+        		case "kaohsiung2":
+        			movieName=["寶貝老闆","羅根","目擊者","美女與野獸"];
+        			break;
+    			default:
+        			movieName=["目擊者","當他們認真編織時","聲之形","我和我的冠軍女兒"];
+        			break;
+			}
+
+			// 把對應的資料填上
+			for(var i=1 ; i<=4 ; i++){
+				var Idname = "presentM"+i;
+				var fullPath_moviePic = picPath+Idname+".jpg";
+				var fullPath_movieClass = picPath+Idname+"-class.jpg";
+				//改電影顯示圖
+				var picID = Idname + "-pic";
+				var moviePic_show = document.getElementById(picID);
+				moviePic_show.src = "https://placem.at/things?w=170&h=240&random="+i;
+				//改a的href
+				var newA = document.getElementById(Idname).getElementsByTagName("a")[0];
+				newA.href = "movie-page-now.html?branch="+branchName+"&pointer="+Idname;
+				//改分級圖
+				var classPicID = Idname + "-class";
+				var movieClass_show = document.getElementById(classPicID);
+				movieClass_show.src = fullPath_movieClass;
+				//改電影名稱
+				document.getElementsByClassName("movie-name")[i-1].innerText = movieName[i-1];
+			}
+		}).click(function(){
+			// 如果超連結被點擊時, 取消連結動作
+				return false; });
+	});
+	//頁數切換 - 僅為示意 - 未成功
+	var slideIndex = 0;
+	function plusDivs(){
+		showDivs(slideIndex += n);
+	}
+
+	function showDivs(n){
+		var pointer = document.getElementsByClassName("switch-bar-pages")[0].id;
+		var Here = document.getElementById(pointer);
+
+		//pointer.style.backgroundColor = "#c60606";
+		if(n > 4){
+  			slideIndex = 1;
+  		}
+ 		if(n < 1){
+ 			slideIndex = 4;
+ 		}
+  		for(i = 0; i < 4; i++){
+     		Here.style.backgroundColor = "#c60606";
+ 		}
+  		
+  		for(i = 0; i < 4; i++){
+     		Here.style.backgroundColor = "rgba(255,255,255,0.0)";
+  		}
+  		/*x[slideIndex-1].style.display = "block";
+  		dots[slideIndex-1].style.backgroundColor="rgba(234,0,0,0.7)";*/
+
+	}
+	</script>
+</head>
+<body>
+	<div class="wrap">
+		<div class="header">
+			<div class="logo">
+				<a href="index.html">
+					<img src="img/LogoPic.png" alt="">
+				</a>
+				<h1 style="display: none;">六角電影院-今日時刻表</h1>
+			</div>
+
+			<div class="functionBar">
+				<ul>
+					<li> <a id="level_1" href="page_timetable.html" style="border-bottom: 5px solid #F47C7C;">時刻表</a> </li>
+					<li> <a id="level_1" href="movie-offer.html">優惠方案</a> </li>
+					<li> <a id="level_1" href="">電影列表</a>
+						<ul>
+							<li> <a id="level_2" href="movie-all-now.html">現正熱映</a> </li>
+							<li> <a id="level_2" href="movie-all-future.html">即將上映</a> </li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+
+			<a href="" id="rollButton">
+				<img id="rollPic" src="img/arrowUp.png" alt=""><br>
+				<span id="rollCon">UP</span>
+			</a>
+		</div>
+
+		<div class="content">
+			<div class="content-title">
+				今日時刻表
+				<img id="titleIcon" src="img/timetable_titleIcon.png" alt="">
+			</div>
+			<div class="schedule-display">
+				<div class="area-opt-list">
+					<div class="area-opt-bottom" id="taipei1">
+						<a href="" >台北影城1</a>
+					</div>
+					<div class="area-opt-bottom" id="taipei2">
+						<a href="" >台北影城2</a>
+					</div>
+					<div class="area-opt-bottom" id="taipei3">
+						<a href="" >台北影城3</a>
+					</div>
+					<div class="area-opt-bottom" id="kaohsiung1">
+						<a href="" >高雄影城1</a>
+					</div>
+					<div class="area-opt-bottom" id="kaohsiung2">
+						<a href="">高雄影城2</a>
+					</div>
+
+				</div>
+
+				<div class="schedule-area">
+					<div class="switch-bar">
+						<a href="" id="page-review" onclick="plusDivs(+1)"></a>
+						<div class="switch-bar-pages" style="background-color: #c60606;" id="page1">1</div>
+						<div class="switch-bar-pages" id="page2">2</div>
+						<div class="switch-bar-pages" id="page3">3</div>
+						<div class="switch-bar-pages" id="page4">4</div>
+						<a href="" id="page-priview" onclick="plusDivs(-1)"></a>
+					</div>
+
+					<div class="movieDisplay">
+						<div class="movieBox" id="presentM1">
+							<div class="movie-pic" >
+								<a href="movie-page-now.html?branch=taipei1&pointer=presentM1">
+									<img id="presentM1-pic" src="https://placem.at/things?w=170&h=240&random=1" alt="" >
+								</a>
+							</div>
+							<div class="movie-info">
+								<div class="movie-name">
+									我和我的冠軍女兒
+								</div>
+								<div class="movie-class">
+									<img id="presentM1-class" src="img/taipei1/presentM1-class.jpg" alt="">
+								</div>
+								<div class="clear"></div>
+								<div class="movie-time">
+									<div class="mtTitle">早上</div>
+									<p></p>
+								</div>
+								<div class="movie-time">
+									<div class="mtTitle">下午</div>
+									<p></p>
+									</div>
+								<div class="movie-time">
+									<div class="mtTitle">晚上</div>
+									<p></p>
+								</div>
+							</div>
+						<div class="clear"></div>
+						</div>
+
+						<div class="movieBox" id="presentM2">
+							<div class="movie-pic">
+								<a href="movie-page-now.html?branch=taipei1&pointer=presentM2">
+									<img id="presentM2-pic" src="https://placem.at/things?w=170&h=240&random=2" alt="">
+								</a>
+							</div>
+							<div class="movie-info">
+								<div class="movie-name">
+									當他們認真編織時
+								</div>
+								<div class="movie-class">
+									<img id="presentM2-class" src="img/taipei1/presentM2-class.jpg" alt="">
+								</div>
+								<div class="clear"></div>
+								<div class="movie-time">
+									<div class="mtTitle">早上</div>
+									<p></p>
+								</div>
+								<div class="movie-time">
+									<div class="mtTitle">下午</div>
+									<p></p>
+								</div>
+								<div class="movie-time">
+									<div class="mtTitle">晚上</div>
+									<p></p>
+								</div>
+							</div>
+							<div class="clear"></div>
+						</div>
+
+						<div class="movieBox" id="presentM3">
+							<div class="movie-pic">
+								<a href="movie-page-now.html?branch=taipei1&pointer=presentM3">
+									<img id="presentM3-pic" src="https://placem.at/things?w=170&h=240&random=3" alt="">
+								</a>
+							</div>
+							<div class="movie-info">
+								<div class="movie-name">
+									聲之形
+								</div>
+								<div class="movie-class">
+									<img id="presentM3-class" src="img/taipei1/presentM3-class.jpg" alt="">
+								</div>
+								<div class="clear"></div>
+								<div class="movie-time">
+									<div class="mtTitle">早上</div>
+									<p></p>
+								</div>
+								<div class="movie-time">
+									<div class="mtTitle">下午</div>
+									<p></p>
+								</div>
+								<div class="movie-time">
+									<div class="mtTitle">晚上</div>
+									<p></p>
+								</div>
+							</div>
+							<div class="clear"></div>
+						</div>
+
+						<div class="movieBox" id="presentM4">
+							<div class="movie-pic">
+								<a href="movie-page-now.html?branch=taipei1&pointer=presentM4">
+									<img id="presentM4-pic" src="https://placem.at/things?w=170&h=240&random=4" alt="">
+								</a>
+							</div>
+							<div class="movie-info">
+								<div class="movie-name">
+									目擊者
+								</div>
+								<div class="movie-class">
+									<img id="presentM4-class" src="img/taipei1/presentM4-class.jpg" alt="">
+								</div>
+								<div class="clear"></div>
+								<div class="movie-time">
+									<div class="mtTitle">早上</div>
+									<p></p>
+								</div>
+								<div class="movie-time">
+									<div class="mtTitle">下午</div>
+									<p></p>
+									</div>
+								<div class="movie-time">
+									<div class="mtTitle">晚上</div>
+									<p></p>
+								</div>
+							</div>
+							<div class="clear"></div>
+						</div>
+					</div>
+
+					<div class="switch-bar">
+						<a href="" id="page-review"></a>
+						<div class="switch-bar-pages" style="background-color: #c60606;" id="page1">1</div>
+						<div class="switch-bar-pages" id="page2">2</div>
+						<div class="switch-bar-pages" id="page3">3</div>
+						<div class="switch-bar-pages" id="page4">4</div>
+						<a href="" id="page-priview"></a>
+					</div>
+				</div>
+				<div class="clear"></div>
+
+			</div>
+		</div>
+
+		<div class="footer">
+			<div class="recruitment">
+				<h3>人才招募</h3>
+				<table>
+						<tr>
+							<td id="demandCateName">線上</td>
+							<td id="demandCateCon">
+								<ul>
+									<li>前端工程師: 熟悉CSS / JavaScript / AJAX ...etc</li>
+									<li>後端工程師: API / 資料庫語言 ...etc</li>
+								</ul>
+							</td>
+						</tr>
+
+						<tr>
+							<td id="demandCateName">線下</td>
+							<td id="demandCateCon">
+								擴大徵才，誠邀各界高階幕僚、行銷、經營管理相關領域之將相人才加入
+							</td>
+						</tr>
+				</table>
+				<div id="btn_moreInfo"><a href="">更多資訊</a></div>
+			</div>
+
+			<div class="copyright">
+			<h3>版權宣告</h3>
+			<p>
+				Copyright © 2017 六角電影院 Inc. All rights reserved.<br>
+				其他電影宣傳品與簡介，屬原電影發行商所有
+			</p>
+
+			</div>
+
+			<div class="outLink">
+			<h3>外部連結</h3>
+
+				<div class="LinkContainer">
+					<a href=""> <div id="trapezoid_1"></div> </a>
+					<a href="http://www.ticket.com.tw/" target="_blank">
+						<div id="trapezoid_2">年代<br>售票</div>
+					</a>
+					<a href=""> <div id="trapezoid_3"></div> </a>
+				</div>
+
+				<div class="LinkContainer">
+					<a href=""> <div id="trapezoid_1"></div> </a>
+					<a href="http://tickets.books.com.tw/index/" target="_blank">
+					<div id="trapezoid_2">博客來<br>售票</div>
+					</a>
+					<a href=""> <div id="trapezoid_3"></div> </a>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>

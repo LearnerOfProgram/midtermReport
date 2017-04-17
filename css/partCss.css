@@ -1,0 +1,695 @@
+/* v1.0 | 20080212 */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+/* remember to define focus styles! */
+:focus {
+    outline: 0;
+}
+
+/* remember to highlight inserts somehow! */
+ins {
+    text-decoration: none;
+}
+del {
+    text-decoration: line-through;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/*CSS Reset*/
+
+------
+
+body {
+	font-family: "微軟正黑體";
+	background-color: #F2F2F2;
+}
+
+.wrap{
+	font-family: "微軟正黑體";
+	width: 100%;
+	/*min-height: 100%;*/
+	position: relative;
+	background-color: #fffbe1;
+}
+
+
+.header {
+	height: 80px;
+	/*margin: 25px;*/
+	padding: 25px 0;
+	position: relative;
+	background-color: #fffbe1;
+}
+
+.logo{
+	width: 330px;
+	/*background-color: #A0A0A0;*/
+	float: left;
+	margin: 10px 0 10px 15px;
+	position: absolute;
+	top: 0px;
+}
+
+.logo img{
+	width: 80%;
+	height: 80%;
+	padding: 0 50px;
+}
+
+.functionBar{
+	width: 570px;
+	position: absolute;
+ 	right: 0px;
+ 	bottom: 30px;
+	float: right;
+	margin-right: 45px;
+	/*background-color: #A0B4DC;*/
+}
+
+#level_1{
+	/*第一層清單*/
+	width: 110px;
+	list-style-type: none;
+	float: left;
+	position: relative;
+	font-size: 22px;
+	z-index: 999999;
+	text-decoration: none;
+	font-size: 22px;
+	color: #F47C7C;
+	display: block;
+	padding: 25px 20px 0 20px;
+	margin: 0 10px;
+	text-align: center;
+	border-bottom: 5px solid rgba(255,255,255,0);
+}
+
+#level_1:hover{
+	border-bottom: 5px solid #F47C7C;/*桃紅色底*/
+}
+
+
+.functionBar ul li:hover > a{
+	border-bottom: 5px solid #F47C7C;
+
+}
+
+.functionBar li:hover > ul {
+	display: block;
+	background-color: #fffbe1;
+	border: 1px dashed gray;
+}
+
+
+.functionBar ul ul{
+	/*次選單 第二層清單*/
+	border-bottom: 5px solid rgba(255,255,255,0);		/*預設一個透明底*/
+	z-index: 999;
+	font-size: 22px;
+	position: absolute;
+	top: 50px;
+    right: 70px;
+    display: none;
+}
+
+#level_2{
+	text-decoration: none;
+	color: #F47C7C;
+	border-bottom: 5px solid rgba(255,255,255,0);
+	padding: 15px 10px 0 10px;
+	margin: 10px 20px;
+	display: block;
+}
+
+#level_2:hover{
+	border-bottom: 5px solid #F47C7C;/*桃紅色底*/
+}
+
+#rollButton{
+	position: fixed;
+	bottom: 55px;
+	right: 0px;
+	z-index: 9999999;
+	background: #b4f740;
+	height: 85px;
+	width: 70px;
+	-moz-border-radius: 85px 0 0 85px; 
+	-webkit-border-radius:85px 0 0 85px; 
+	border-radius: 85px 0 0 85px;
+	text-decoration: none;
+	color: #000;
+	/**/
+}
+
+#rollPic{
+	width: 35px;
+	height: 35px;
+	padding: 5px 5px 0 5px;
+	margin: 5px 15px 0 15px;
+}
+
+#rollCon{
+	font-size: 20px;
+	font-weight: bold;
+	margin: 5px 25px;
+}
+
+.content {
+	position: relative;
+	height: 1280px;
+}
+
+.BannerArea{
+	width: 100%;
+	height: 330px;
+	float: left;
+	margin: 0 0;
+}
+
+.BannerPic{
+	width: 1278px;
+	height: 330px;  /*暫定*/
+	/*background-color: #F1ADA0;*/
+	float: left;
+	z-index: 1;
+	position: relative;
+	overflow: hidden;
+}
+
+
+
+.index_banner_slide img{
+	overflow: hidden;
+	width: 100%;
+}
+
+
+.capitalText{
+	width: 160px;
+	padding: 15px;
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	background-color: rgba(187, 34, 34, 0.75);
+	z-index: 2;
+	font-size: 22px;
+	color: white;
+	text-align: center;
+	font-weight: bold;
+}
+
+
+.BannerBut{
+	width: 70px;
+	height: 330px;  /*暫定*/
+	background-color: #E34646;
+	float: left;
+	text-align: center;
+	font-size: 40px;
+}
+
+.BannerBut button{
+	width: 100%;
+	height: 165px;
+	font-size: 35px;
+	background-color: rgba(255,255,255,0);
+	border: 1px solid rgba(255,255,255,0);
+}
+
+
+.BannerBut button:hover{
+	color: white;
+	font-size: 60px;
+	/*border: 1px solid gray;*/
+	box-shadow: 5px 5px 150px 10px rgba(0,0,0,0.5);
+}
+
+
+.trianglePic{
+	z-index: 2;
+	width: 0;
+	height: 0;
+	border-style: dashed;
+	border-width: 0 0 115px 265px;
+	border-color: transparent transparent #F47C7C transparent;
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+}
+
+.goMovieList{
+	z-index: 3;
+	border: none;
+	/*background-color: #88C5D2;*/
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+	font-size: 25px;
+}
+
+.goMovieList a{
+	display: block;
+	text-decoration: none;
+	padding:  55px 20px 20px 65px;
+	color: white;
+}
+
+.goMovieList a:hover{
+	font-weight: bold;
+}
+
+
+.dotArea{
+	/*width: 150px;*/
+	/*height:  30px;*/
+	z-index: 5;
+	position: absolute;
+	bottom: 15px;
+	left: 560px;
+	vertical-align: middle;
+}
+
+.dotArea button{
+	/*按鈕原先長這樣*/
+	width: 15px;
+	height: 15px;
+	border-radius: 15px;
+	border-color: rgba(255,255,255,0);
+	box-shadow: 10px 5px 35px 15px rgb(0,0,0);
+	padding: 8px;
+	margin: 10px 10px;
+	/*background-color: #9B456F;*/
+}
+
+
+.SearchArea{
+	margin: 20px 60px;
+	/*background-color: #94764C;*/
+	position: absolute;
+	top: 335px;
+	color: white;
+	font-size: 18px;
+	border-bottom: 5px solid #1570CB;
+}
+
+.SearchArea:hover{
+	border-bottom: 5px solid #235C95;
+}
+/*
+#searchText{
+	float: left;
+	width: 1140px;
+	margin-right: 0px;
+}*/
+
+#searchText{
+	float: left;
+	width: 1100px;
+	margin-right: 0px;
+	padding: 10px 25px 0 25px;
+	margin: 5px 5px;
+	vertical-align: middle;
+	font-size: 20px;
+	border: none;
+	background-color: #FFFBE1;
+	font-family: "微軟正黑體";
+}
+
+#searchText input[type=text]:hover{
+}
+
+#searchIcon{
+	float: left;
+	width: 35px;
+	height: 35px;
+	padding: 10px;
+}
+
+
+.MoreDisArea{
+	width: 1215px;
+	position: absolute;
+	/*top: 820px;
+	margin: 10px 20px 55px 20px;*/
+	top: 440px;
+	margin: 10px 60px;
+}
+
+.mdPic{
+	width: 1015px;
+	max-height: 332px;
+	float: left;
+	background-color: #858EF4;
+	/*border-radius: 25px 0 0 25px;*/
+	border-top: 2px dashed gray;
+	border-left: 2px dashed gray;
+	border-bottom: 2px dashed gray;
+}
+
+
+.mdBut{
+	width: 16%;
+	min-height: 330px;
+	float: left;
+	/*background: #FFE792;*/
+	border-radius: 0 25px 25px 0;
+	/*border-top: 2px dashed #211E1E;
+	border-right: 2px dashed #211E1E;
+	border-bottom: 2px dashed #211E1E;*/
+	position: relative;
+}
+
+.program{
+	/*width: 100%;*/
+	/*height: 81px;*/
+	display: block;
+	background-color: #A1DE93;
+	border: 2px dashed gray;
+	text-decoration: none;
+	font-size: 28px;
+	color: #000;
+	padding: 26px 10px;
+	text-align: center;
+}
+
+.program:hover{
+	background-color: #67A659;
+	color: #FFF;
+	position: relative;
+	top: -5px;
+	left: -5px;
+	box-shadow: 5px 10px 60px 5px #000;
+}
+
+/*.mdBut a:visited{
+	background-color: #67A659;
+}*/
+
+.UpgoingArea{
+	position: absolute;
+	top: 855px;
+	margin: 10px 20px 80px 60px;
+}
+
+.theTitle{
+	width: 220px;
+	height: 50px;
+	/*margin-bottom: 20px;*/
+	position: relative;
+}
+
+#tag_part1{
+	float: left;
+	background-color: #67A659;
+	width: 70%;
+	height: 100%;
+}
+
+#tag_part2{
+	float: left;
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 25px 0 25px 35px;
+	border-color: transparent transparent transparent #67A659;
+
+}
+
+#theTitleContent{
+	z-index: 9999;
+	position: absolute;
+	top: 15px;
+	left: 35px;
+	color: white;
+	font-size: 25px;
+	font-weight: bold;
+}
+
+.upPic{
+	width: 1130px;
+	height: 320px;
+	background-color: #F7F4C5;
+	float: left;
+	overflow: hidden;
+}
+
+.singleMovie{
+	float: left;
+	width: 160px;
+	height: 245px;
+	overflow: hidden;
+	margin: 40px 25px 40px 0;
+	background-color: black;
+	opacity: 1;
+    color: rgba(255,255,255,0);
+    font-size: 80px;
+    position: relative;
+}
+
+.singleMovie:hover{
+	transform: scale(1.2,1.2);
+	color: #FFF;
+}
+
+.singleMovie img:hover{
+	opacity: 0.2;
+	-webkit-filter: blur(2px);
+    filter: blur(2px);
+}
+
+.upM_title{
+	position: absolute;
+	top: 100px;
+	left: 22px;
+	font-size: 23px;
+	text-align: center;
+	z-index: 999;
+}
+
+
+.upBut{
+	background-color: #F7F48B;
+	float: left;
+}
+
+.pageBut{
+	width: 80px;
+	height: 160px;
+	display: block;
+	font-size: 28px;
+	text-align: center;
+	vertical-align: middle;
+	color: #C7C223;
+	line-height: 160px;
+}
+
+.pageBut:hover{
+	font-size: 45px;
+	box-shadow: 5px 5px 70px 5px #000;
+	font-weight: bold;
+}
+
+
+
+.footer {
+	width: 100%;
+	height: 172px;
+	background-color: #E34646;
+	/*position: absolute;
+	bottom: 0;*/
+}
+
+
+.recruitment{
+	float: left;
+	width:  600px;
+	/*background-color: #808080;*/
+	/*margin: 25px 50px;*/
+	margin-top: 25px;
+	margin-left: 60px;
+	margin-bottom: 25px;
+	position: relative;
+}
+
+.recruitment h3{
+	width: 120px;
+	color: white;
+	text-align: center;
+	font-size: 24px;
+	border: 1px dashed white;
+	padding: 5px;
+}
+
+.recruitment table{
+	color: white;
+	font-size: 18px;
+	margin: 10px 10px 0 10px;
+}
+
+#demandCateName{
+	width: 50px;
+	font-size: 18px;
+	text-align: center;
+	vertical-align: middle;
+	padding: 10px 0;
+}
+
+#demandCateCon{
+	width: 320px;
+	padding: 0 5px;
+	font-size: 15px;
+	vertical-align: middle;
+}
+
+#btn_moreInfo{
+	background-color: rgb(255,173,173);
+	border-radius: 10px;
+	border: 1px solid rgba(255,255,255,0);
+	position: absolute;
+	right: 25px;
+	bottom: 0px;
+	z-index: 999;
+}
+
+#btn_moreInfo a{
+	display: block;
+	font-size: 20px;
+	font-weight: bold;
+	padding: 10px 20px;
+	text-decoration: none;
+	color: #E34646;
+}
+
+#btn_moreInfo a:hover{
+	border-radius: 10px;
+	color: black;
+}
+
+
+.copyright{
+	float: left;
+	width: 580px;
+	/*background-color: #20C92F;*/
+	margin: 25px 0 25px 40px;
+	position: absolute;
+	right: 25px;
+}
+
+.copyright h3{
+	width: 120px;
+	color: white;
+	text-align: center;
+	font-size: 24px;
+	border: 1px dashed white;
+	padding: 5px;
+	float: left;
+}
+
+.copyright p{
+	font-size: 15px;
+	color: white;
+	padding: 3px 20px;
+	float: left;
+}
+
+.outLink{
+	width: 580px;
+	/*background-color: #20C92F;*/
+	position: absolute;
+	right: 25px;
+	bottom: 0px;
+	margin: 25px 0 25px 40px;
+}
+
+.outLink h3{
+	width: 120px;
+	color: white;
+	text-align: center;
+	font-size: 24px;
+	border: 1px dashed white;
+	padding: 5px;
+	float: left;
+	margin-top: 10px;
+
+}
+
+.LinkContainer{
+	float: left;
+	/*width: 370px;*/
+	/*height: 70px;*/
+	/*background-color: #FFF;*/
+	margin-left: 20px;
+	position: relative;
+}
+
+#trapezoid_1{
+	width: 0;
+	height: 0;
+	float: left;
+	border-style: solid;
+	border-width: 30px 15px 30px 0;
+	border-color: transparent #FFADAD transparent transparent;
+}
+
+#trapezoid_2{
+	width: 65px;
+	/*height: 60px;*/
+	float: left;
+	background-color: #FFADAD;
+	font-size: 20px;
+	padding: 10px 0;
+	text-align: center;
+	color: #E34646;
+	font-weight: bold;
+}
+
+#trapezoid_3{
+	width: 0;
+	height: 0;
+	float: left;
+	border-style: solid;
+	border-width: 30px 0 30px 15px;
+	border-color: transparent transparent transparent #FFADAD;
+
+}
+
+#trapezoid_2:hover{
+	color: black;
+}
+

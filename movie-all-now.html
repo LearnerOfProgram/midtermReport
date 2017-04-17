@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>現正熱映 - 全</title>
+	<link rel=stylesheet type="text/css" href="css/movie-all-now.css">
+
+	<script>
+		//感應[至頂按鈕]
+		document.getElementById('rollButton').click(function()
+		{
+		        var elmnt = document.getElementsByClassName("header")[0];
+    			elmnt.scrollLeft = 0;
+    			elmnt.scrollTop = 0;
+    			/**/
+		});
+	</script>
+</head>
+<body>
+	<div class="wrap">
+		<div class="header">
+			<div class="logo">
+				<a href="index.html">
+					<img src="img/LogoPic.png" alt="">
+				</a>
+				<h1 style="display: none;">六角電影院 優惠頁面</h1>
+			</div>
+
+			<div class="functionBar">
+				<ul>
+					<li> <a id="level_1" href="page_timetable.html">時刻表</a> </li>
+					<li> <a id="level_1" href="movie-offer.html">優惠方案</a> </li>
+					<li> <a id="level_1" href="#" style="border-bottom: 5px solid #F47C7C;">電影列表</a>
+						<ul>
+							<li> <a id="level_2" href="#">現正熱映</a> </li>
+							<li> <a id="level_2" href="movie-all-future.html">即將上映</a> </li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<a href="" id="rollButton">
+				<img id="rollPic" src="img/arrowUp.png" alt=""><br>
+				<span id="rollCon">UP</span>
+			</a>
+		</div>
+
+		
+		<div class="title">
+			現正熱映
+		</div>
+
+		<div class="movie-page">
+
+			<div class="movie-row">
+				<div class="single-movie">
+					<div class="movie-poster">
+						<a href="movie-page-now.html">
+							<img src="https://placem.at/things?w=200&h=292&random=1">
+						</a>
+					</div>
+					<div class="movie-title">
+						寶貝老闆
+					</div>
+					<div id="clueText">
+						<span>喜劇片</span><br><br>
+						98 mins
+					</div>
+				</div>
+
+				<div class="single-movie">
+					<div class="movie-poster">
+						<a href="movie-page-now.html"><img src="https://placem.at/things?w=200&h=292&random=2"></a>
+					</div>
+					<div class="movie-title">
+						羅根Logan
+					</div>
+					<div id="clueText">
+						<span>劇情片</span><br><br>
+						141 mins
+					</div>
+				</div>
+				<div class="single-movie">
+					<div class="movie-poster">
+						<a href="movie-page-now.html"><img src="https://placem.at/things?w=200&h=292&random=3"></a>
+					</div>
+					<div class="movie-title">
+						目擊者
+					</div>
+					<div id="clueText">
+						<span>劇情片</span><br><br>
+						118 mins
+					</div>
+				</div>
+				<div class="single-movie">
+					<div class="movie-poster">
+						<a href="movie-page-now.html"><img src="https://placem.at/things?w=200&h=292&random=4"></a>
+					</div>
+					<div class="movie-title">
+						美女與野獸
+					</div>
+					<div id="clueText">
+						<span>愛情片</span><br><br>
+						139 mins
+					</div>
+				</div>
+				<div class="clear"></div>	
+			</div>
+
+			<div class="movie-row">
+				<div class="single-movie">
+					<div class="movie-poster">
+						<a href="movie-page-now.html"><img src="https://placem.at/things?w=200&h=292&random=5"></a>
+					</div>
+					<div class="movie-title">
+						當他們認真編織時
+					</div>
+						<div id="clueText">
+							<span>劇情片</span><br><br>
+							127 mins
+						</div>
+				</div>
+				<div class="single-movie">
+					<div class="movie-poster">
+						<a href="movie-page-now.html"><img src="https://placem.at/things?w=200&h=292&random=6"></a>
+					</div>
+					<div class="movie-title">
+						聲之形
+					</div>
+					<div id="clueText">
+						<span>劇情片</span><br><br>
+						129 mins
+					</div>
+				</div>
+				<div class="single-movie">
+					<div class="movie-poster">
+						<a href="movie-page-now.html"><img src="https://placem.at/things?w=200&h=292&random=7"></a>
+					</div>
+					<div class="movie-title">
+						我和我的冠軍女兒
+					</div>
+					<div id="clueText">
+						<span>劇情片</span><br><br>
+						169 mins
+					</div>
+				</div>
+				<div class="single-movie">
+					<div class="movie-poster">
+						<a href="movie-page-now.html"><img src="https://placem.at/things?w=200&h=292&random=8"></a>
+					</div>
+					<div class="movie-title">
+						日常對話
+					</div>
+					<div id="clueText">
+						<span>紀錄片</span><br><br>
+						88 mins
+					</div>
+				</div>
+			<div class="clear"></div>	
+			</div>
+
+			<div class="switch-bar">
+				<a href="" id="page-review"></a>
+				<a href="" class="switch-bar-pages" style="background-color: #6fabe7;" id="page1">1</a>
+				<a href="" class="switch-bar-pages" id="page2">2</a>
+				<a href="" class="switch-bar-pages" id="page3">3</a>
+				<a href="" class="switch-bar-pages" id="page4">4</a>
+				<a href="" id="page-priview"></a>
+			</div>
+		</div>
+
+		<div class="ad-part">
+			<a href="movie-offer.html">
+				<img src="https://placem.at/things?w=975&h=326" class="ad-pic">
+			</a>
+			<a href="movie-offer.html">
+				<div class="ad-button">
+				</div>
+				<span id="textDescription">快去享優惠➥</span>
+			</a>
+
+		</div>
+
+
+		<div class="footer">
+		<div class="recruitment">
+			<h3>人才招募</h3>
+			<table>
+					<tr>
+						<td id="demandCateName">線上</td>
+						<td id="demandCateCon">
+							<ul>
+								<li>前端工程師: 熟悉CSS / JavaScript / AJAX ...etc</li>
+								<li>後端工程師: API / 資料庫語言 ...etc</li>
+							</ul>
+						</td>
+					</tr>
+
+					<tr>
+						<td id="demandCateName">線下</td>
+						<td id="demandCateCon">
+							擴大徵才，誠邀各界高階幕僚、行銷、經營管理相關領域之將相人才加入
+						</td>
+					</tr>
+			</table>
+			<div id="btn_moreInfo"><a href="">更多資訊</a></div>
+		</div>
+
+		<div class="copyright">
+			<h3>版權宣告</h3>
+			<p>
+				Copyright © 2017 六角電影院 Inc. All rights reserved.<br>
+				其他電影宣傳品與簡介，屬原電影發行商所有
+			</p>
+
+		</div>
+
+		<div class="outLink">
+			<h3>外部連結</h3>
+
+			<div class="LinkContainer">
+				<a href=""  class="control"> <div id="trapezoid_1"></div> </a>
+				<a href="http://www.ticket.com.tw/" target="_blank"  class="control">
+					<div id="trapezoid_2">年代<br>售票</div>
+				</a>
+				<a href=""  class="control"> <div id="trapezoid_3"></div> </a>
+				<div class="clear"></div>
+			</div>
+
+			<div class="LinkContainer">
+				<a href=""  class="control"> <div id="trapezoid_1"></div> </a>
+				<a href="http://tickets.books.com.tw/index/" target="_blank"  class="control">
+					<div id="trapezoid_2">博客來<br>售票</div>
+				</a>
+				<a href=""  class="control"> <div id="trapezoid_3"></div> </a>
+				<div class="clear"></div>
+			</div>
+
+
+		</div>
+			<div class="clear"></div>
+	</div>
+
+	</div>
+
+
+</body>
+</html>

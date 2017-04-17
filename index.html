@@ -1,0 +1,408 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>六角電影院</title>
+	<link rel="stylesheet" href="css/partCss.css">
+	<script type="text/javascript" src="http://keleyi.com/keleyi/pmedia/jquery-1.9.1.min.js"></script>
+	<script>
+		//感應[至頂按鈕]
+		document.getElementById('rollButton').click(function()
+		{
+		        var elmnt = document.getElementsByClassName("header")[0];
+    			elmnt.scrollLeft = 0;
+    			elmnt.scrollTop = 0;
+    			/**/
+		});
+	</script>
+	<script type="text/javascript">
+		/*var slideIndex = 1;
+		showDivs(1);*/
+		//自動輪播banner - 未完成
+		var slideIndex = 0;
+		carousel();
+
+		function carousel() {
+    		var i;
+    		var x = document.getElementsByClassName("index_banner_slide");
+    		for(i = 0 ; i < x.length ; i++){
+       			x[i].style.display = "none";
+    		}
+    		slideIndex++;
+    		if (slideIndex > x.length) {
+    			slideIndex = 1;
+    		}
+    		x[slideIndex-1].style.display = "block";
+    		setTimeout(carousel, 500); // Change image every 2 seconds
+		}
+
+		function plusDivs(n) {
+  	  		showDivs(slideIndex += n);
+		}
+
+		function showDivs(n) {
+  			var i;
+  			var x = document.getElementsByClassName("index_banner_slide");
+  			var dots = document.getElementsByClassName("indicator");
+  			if(n > x.length){
+  				slideIndex = 1;
+  			}
+ 			if(n < 1){
+ 				slideIndex = x.length;
+ 			}
+  			for(i = 0; i < x.length; i++){
+     			x[i].style.display = "none";
+ 			}
+  			for(i = 0; i < dots.length; i++){
+     			dots[i].style.backgroundColor="rgba(255,255,255,0.7)";
+  			}
+  			x[slideIndex-1].style.display = "block";
+  			dots[slideIndex-1].style.backgroundColor="rgba(234,0,0,0.7)";
+		}
+
+		function currentDiv(n) {
+  			showDivs(slideIndex = n);
+		}
+
+		function ChangeSearchIcon_hover(element) {
+    		element.setAttribute('src', 'img/index_searchIcon_hover.png');
+		}
+		function ChangeSearchIcon_unhover(element) {
+    		element.setAttribute('src', 'img/index_searchIcon.png');
+		}
+	</script>
+	<script>
+	//更多好康那區的動畫
+	$(function()
+	{
+		// 用來顯示大圖片用
+		var $showImage = $('.mdPic');
+
+		// 當滑鼠移到 .mdBut中的某個超連結
+		$('.mdBut a').mouseover(function()
+		{
+		// 把.mdPic的src改成被移到的超連結的位置
+			$showImage.attr('src', $(this).attr('href'));
+		}).click(function(){
+			// 如果超連結被點擊時, 取消連結動作
+				return false; });
+	});
+
+	//即將上映那區的動畫 - 未完成
+	$(document).ready(function(e){
+
+    		time = window.setInterval(function()
+    		{ $('.priview').click(); },5000);
+
+    		linum = $('.mainList li').length;//图片数量
+    		w = linum * 350;	//ul宽度
+    		$('.mainList').css('width', w + 'px');//ul宽度
+    		$('.swapList').html($('.mainlist').html());//复制内容
+    		$('.priview').click(function()
+    		{
+        		if($('.swapList,.mainList').is(':animated'))
+        		{
+            		$('.swapList,.mainList').stop(true,true);
+        		}
+        		if($('.mainList li').length>6)
+        		{//多于6张图片
+            		ml = parseInt($('.mainList').css('left'));//默认图片ul位置
+            		sl = parseInt($('.swapList').css('left'));//交换图片ul位置
+            		if(ml<=0 && ml>w*-1)
+            		{//默认图片显示时
+                		$('.swapList').css({left: '1000px'});//交换图片放在显示区域右侧
+                		$('.mainList').animate({left: ml - 1000 + 'px'},'slow');//默认图片滚动
+                		if(ml==(w-1000)*-1)
+                		{//默认图片最后一屏时
+                    		$('.swapList').animate({left: '0px'},'slow');//交换图片滚动
+                		}
+            		}
+            	else
+            	{//交换图片显示时
+                	$('.mainList').css({left: '1000px'})//默认图片放在显示区域右
+                	$('.swapList').animate({left: sl - 1000 + 'px'},'slow');//交换图片滚动
+                	if(sl==(w-1000)*-1)
+                	{//交换图片最后一屏时
+                    	$('.mainList').animate({left: '0px'},'slow');//默认图片滚动
+                	}
+            	}
+        }
+    })
+    $('.review').click(function(){
+        	if($('.swapList,.mainList').is(':animated'))
+        	{
+            	$('.swapList,.mainList').stop(true,true);
+        	}
+
+        	if($('.mainList li').length>4)
+        	{
+            	ml = parseInt($('.mainList').css('left'));
+            	sl = parseInt($('.swapList').css('left'));
+            	if(ml<=0 && ml>w*-1)
+            	{
+                	$('.swapList').css({left: w * -1 + 'px'});
+                	$('.mainList').animate({left: ml + 1000 + 'px'},'slow');
+                if(ml==0)
+                {
+                    $('.swapList').animate({left: (w - 1000) * -1 + 'px'},'slow');
+                }
+            }
+            else
+            {
+                $('.mainList').css({left: (w - 1000) * -1 + 'px'});
+                $('.swapList').animate({left: sl + 1000 + 'px'},'slow');
+                if(sl==0)
+                {
+                    $('.mainList').animate({left: '0px'},'slow');
+                }
+            }
+        }
+    })
+});
+
+$(document).ready(function(){
+    $('.priview,.review').hover(function(){
+            $(this).fadeTo('fast',1);
+        },function(){
+            $(this).fadeTo('fast',0.7);
+    })
+})
+	</script>
+
+</head>
+<body>
+
+<div class="wrap">
+	<div class="header">
+		<div class="logo">
+			<a href="index.html">
+				<img src="img/LogoPic.png" alt="">
+			</a>
+			<h1 style="display: none;">六角電影院</h1>
+		</div>
+
+		<div class="functionBar">
+			<ul>
+				<li> <a id="level_1" href="page_timetable.html">時刻表</a> </li>
+				<li> <a id="level_1" href="movie-offer.html">優惠方案</a> </li>
+				<li> <a id="level_1" href="">電影列表</a>
+					<ul>
+						<li> <a id="level_2" href="movie-all-now.html">現正熱映</a> </li>
+						<li> <a id="level_2" href="movie-all-future.html">即將上映</a> </li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+
+		<a href="" id="rollButton">
+			<img id="rollPic" src="img/arrowUp.png" alt=""><br>
+			<span id="rollCon">UP</span>
+		</a>
+	</div>
+	<div class="content">
+		<div class="BannerArea">
+			<div class="BannerPic">
+				<div class="index_banner_slide" style="display: block;">
+					<a href="">
+						<img src="https://placem.at/things?w=1278&h=415&random=1" alt="玩命關頭8">
+					</a>
+					<div class="capitalText">
+						玩命關頭8
+					</div>
+				</div>
+
+				<div class="index_banner_slide" style="display: none;">
+					<a href="">
+						<img src="https://placem.at/things?w=1278&h=415&random=2" alt="逃出絕命鎮">
+					</a>
+					<div class="capitalText">
+						逃出絕命鎮
+					</div>
+				</div>
+
+				<div class="index_banner_slide" style="display: none;">
+					<a href="">
+						<img src="https://placem.at/things?w=1278&h=415&random=3" alt="拆彈專家">
+					</a>
+					<div class="capitalText">
+						拆彈專家
+					</div>
+				</div>
+
+
+
+				<div class="trianglePic">
+				</div>
+				<div class="goMovieList">
+					<a href="movie-all-now.html">看更多電影</a>
+				</div>
+
+				<!--圖上的圓點按鈕-->
+				<div class="dotArea">
+					<button class="w3-button indicator" id="dot1" onclick="currentDiv(1)" style="background-color: rgba(234,0,0,0.7);"> </button>
+  					<button class="w3-button indicator" id="dot2" onclick="currentDiv(2)"> </button>
+  					<button class="w3-button indicator" id="dot3" onclick="currentDiv(3)"> </button>
+
+				</div>
+			</div>
+
+			<div class="BannerBut">
+				<button onclick="plusDivs(+1)"> > </button>
+				<button onclick="plusDivs(-1)"> < </button>
+
+			</div>
+		</div>
+
+		<div class="SearchArea">
+			<div>
+				<form action="" >
+					<input type="text" id="searchText" placeholder="請輸入搜尋關鍵字">
+					<input type="image" src="img/index_searchIcon.png" onClick="document.formname.submit();" id="searchIcon" onmouseover="ChangeSearchIcon_hover(this);" onmouseout="ChangeSearchIcon_unhover(this);">
+				</form>
+			</div>
+			<!--<img id="searchIcon" src="img/index_searchIcon.png" alt="">-->
+		</div>
+
+
+		<div class="MoreDisArea">
+			<div class="theTitle">
+				<div id="tag_part1"> </div>
+				<div id="tag_part2"> </div>
+				<div id="theTitleContent">更多好康</div>
+			</div>
+			<a href="movie-offer.html">
+				<img src="https://placem.at/things?w=1017&h=336&random=5" class="mdPic" alt="">
+			</a>
+			<div class="mdBut">
+				<a href="https://placem.at/things?w=1017&h=336&random=1" class="program" id="program1" style="border-radius: 0 25px 0 0;">電影新朋友</a>
+				<a href="https://placem.at/things?w=1017&h=336&random=2" class="program" id="program2">情人節特惠</a>
+				<a href="https://placem.at/things?w=1017&h=336&random=3" class="program" id="program3">當月壽星特惠</a>
+				<a href="https://placem.at/things?w=1017&h=336&random=4" class="program" style="border-radius: 0 0 25px 0;" id="program4">本周假日特惠</a>
+			</div>
+
+		</div>
+
+		<div class="UpgoingArea">
+			<div class="theTitle">
+				<div id="tag_part1"> </div>
+				<div id="tag_part2"> </div>
+				<div id="theTitleContent">即將上映</div>
+			</div>
+			<div class="upPic">
+				<ul class="piclist mainlist">
+					<li class="singleMovie">
+						<a href="movie-page-future.html">
+							<img src="https://placem.at/things?w=160&h=245&random=1" alt="">
+						</a>
+						<div class="upM_title"> &nbsp;&nbsp;雷神索爾3</div>
+					</li>
+					
+					<li class="singleMovie">
+						<a href="movie-page-future.html">
+							<img src="https://placem.at/things?w=160&h=245&random=2" alt="">
+						</a>
+						<div class="upM_title">&nbsp;&nbsp;拆彈專家</div>
+					</li>
+
+					<li class="singleMovie">
+						<a href="movie-page-future.html">
+							<img src="https://placem.at/things?w=160&h=245&random=3" alt="">
+						</a>
+						<div class="upM_title">金權性內幕</div>
+					</li>
+
+					<li class="singleMovie">
+						<a href="movie-page-future.html">
+							<img src="https://placem.at/things?w=160&h=245&random=4" alt="">
+						</a>
+						<div class="upM_title">星際異攻隊2</div>
+					</li>
+
+					<li class="singleMovie">
+						<a href="movie-page-future.html" >
+							<img src="https://placem.at/things?w=160&h=245&random=5" alt="">
+						</a>
+						<div class="upM_title">科羅索巨獸</div>
+					</li>
+
+					<li class="singleMovie">
+						<a href="movie-page-future.html" >
+							<img src="https://placem.at/things?w=160&h=245&random=6" alt="">
+						</a>
+						<div class="upM_title">逃出絕命鎮</div>
+					</li>
+				</ul>
+
+				<ul class="piclist swaplist"></ul>
+			</div>
+			<div class="upBut">
+				<a class="pageBut" id="priview"> > </a>
+				<a class="pageBut" id="review"> < </a>
+			</div>
+	
+		</div>
+
+	</div>
+
+	<div class="footer">
+		<div class="recruitment">
+			<h3>人才招募</h3>
+			<table>
+					<tr>
+						<td id="demandCateName">線上</td>
+						<td id="demandCateCon">
+							<ul>
+								<li>前端工程師: 熟悉CSS / JavaScript / AJAX ...etc</li>
+								<li>後端工程師: API / 資料庫語言 ...etc</li>
+							</ul>
+						</td>
+					</tr>
+
+					<tr>
+						<td id="demandCateName">線下</td>
+						<td id="demandCateCon">
+							擴大徵才，誠邀各界高階幕僚、行銷、經營管理相關領域之將相人才加入
+						</td>
+					</tr>
+			</table>
+			<div id="btn_moreInfo"><a href="">更多資訊</a></div>
+		</div>
+
+		<div class="copyright">
+			<h3>版權宣告</h3>
+			<p>
+				Copyright © 2017 六角電影院 Inc. All rights reserved.<br>
+				其他電影宣傳品與簡介，屬原電影發行商所有
+			</p>
+
+		</div>
+
+		<div class="outLink">
+			<h3>外部連結</h3>
+
+			<div class="LinkContainer">
+				<a href=""> <div id="trapezoid_1"></div> </a>
+				<a href="http://www.ticket.com.tw/" target="_blank">
+					<div id="trapezoid_2">年代<br>售票</div>
+				</a>
+				<a href=""> <div id="trapezoid_3"></div> </a>
+			</div>
+
+			<div class="LinkContainer">
+				<a href=""> <div id="trapezoid_1"></div> </a>
+				<a href="http://tickets.books.com.tw/index/" target="_blank">
+					<div id="trapezoid_2">博客來<br>售票</div>
+				</a>
+				<a href=""> <div id="trapezoid_3"></div> </a>
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+
+</body>
+</html>

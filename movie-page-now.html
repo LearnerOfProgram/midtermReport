@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>電影 - 正上映</title>
+	<link rel=stylesheet type="text/css" href="css/movie-page-now.css">
+	<script type="text/javascript" src="http://keleyi.com/keleyi/pmedia/jquery-1.9.1.min.js"></script>
+	<script>
+		//感應[至頂按鈕]
+		document.getElementById('rollButton').click(function()
+		{
+		        var elmnt = document.getElementsByClassName("header")[0];
+    			elmnt.scrollLeft = 0;
+    			elmnt.scrollTop = 0;
+    			/**/
+		});
+	</script>
+	<script type="text/javascript">
+	//接值
+	var url = location.href;
+	//取得問號之後的值
+    var temp = url.split("?");
+    //將值再度分開
+    var vars = temp[1].split("&");
+    var branchName = vars[0].slice(7); 			//.e.g. taipei1
+	var pic = vars[1].slice(8);
+	var fullPath = "img/"+branchName+"/"+pic+".jpg";
+	document.getElementById('show-movie-pic').src = fullPath;
+	alter(fullPath);
+	//設置圖片失敗 尚未找出原因
+	function turnOnVideoPlayer(){
+		//先關掉照片播放功能
+		//打開影片瀏覽器
+		var player = document.getElementsByClassName("movie-media-screen")[0];
+		player.style.display="block";
+	}
+
+	function turnOnPhotoPlayer(){
+		//關閉影片瀏覽器
+		var player = document.getElementById("showVideo");
+		player.style.display = "none";
+	}
+
+	function PauseOrNot() {
+		var player = document.getElementById("showVideo");
+		if(player.paused){
+			player.play();
+			document.getElementById("playIcon").style.display = "none";
+		}
+		else{
+			player.pause();
+			document.getElementById("playIcon").style.display = "block";
+		}
+	}
+
+	function playIt() {
+		var player = document.getElementById("showVideo");
+		player.play();
+		document.getElementById("playIcon").style.display = "none";
+	}
+
+	$(function()
+	{
+		$('.branch-option').mouseover(function()
+		{
+			var branchName = this.id;  //e.g. taipei1
+			var timeList; //儲存片名陣列
+			switch(branchName) {
+    			case "taipei1":
+        			timeList=["00:21","00:15","00:28", "00:45","01:50","08:20","09:32","10:28","11:25","12:40","15:45","18:20","20:15","22:20","23:48"];
+        			break;
+    			case "taipei2":
+        			timeList=["00:45","00:55","01:26", "08:23","09:35","10:26","11:32","12:45","15:25","16:40","17:23","18:20","19:20","21:27","23:45"];
+        			break;
+        		case "taipei3":
+        			timeList=["00:13","00:45","00:55", "01:45","02:50","08:40","09:50","10:13","12:50","13:10","14:45","15:20","16:32","22:23","00:30"];
+        			break;
+        		case "kaohsiung1":
+        			timeList=["00:34","00:45","02:28", "08:40","09:34","10:25","11:32","12:28","14:25","15:40","15:50","18:20","20:15","23:20","00:48"];
+        			break;
+        		case "kaohsiung2":
+        			timeList=["00:47","00:55","01:12", "08:34","09:50","10:20","11:39","12:46","12:29","13:45","15:48","18:40","20:15","23:46","23:55"];
+        			break;
+    			default:
+        			timeList=["00:21","00:15","00:28", "00:45","01:50","08:20","09:32","10:28","11:25","12:40","15:45","18:20","20:15","22:20","23:48"];
+        			break;
+			}
+			//更改時間內容
+			for(var i=1 ; i<=15 ; i++){
+				var nowID = "stNow"+i;
+				var futID = "stFut"+i;
+
+				document.getElementById(nowID).innerHTML = timeList[i-1];
+				document.getElementById(futID).innerHTML = timeList[15-i];
+			}
+		}).click(function(){
+			// 如果超連結被點擊時, 取消連結動作
+				return false; });
+	});
+
+	</script>
+
+<!-- 影片播放器 -->
+
+</script>
+
+
+</head>
+<body>
+	<div class="wrap">
+		<div class="header">
+			<div class="logo">
+				<a href="index.html">
+					<img src="img/LogoPic.png" alt="">
+				</a>
+				<h1 style="display: none;">正上映 電影 我和我的冠軍女兒</h1>
+			</div>
+
+			<div class="functionBar">
+				<ul>
+					<li> <a id="level_1" href="page_timetable.html" style="border-bottom: 5px solid #F47C7C;">時刻表</a> </li>
+					<li> <a id="level_1" href="movie-offer.html">優惠方案</a> </li>
+					<li> <a id="level_1" href="#">電影列表</a>
+						<ul>
+							<li> <a id="level_2" href="movie-all-now.html">現正熱映</a> </li>
+							<li> <a id="level_2" href="movie-all-future.html">即將上映</a> </li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+
+			<a href="" id="rollButton">
+				<img id="rollPic" src="img/arrowUp.png" alt=""><br>
+				<span id="rollCon">UP</span>
+			</a>
+		</div>
+
+		<div class="movie-detail">
+			<div class="movie-pic">
+				<img id="show-movie-pic" src="https://placem.at/things?w=210&h=300" alt="">
+			</div>
+			<div class="movie-frame">
+				<div class="movie-name">
+					我與我的冠軍女兒
+					<span style="font-size: 15px; font-weight: normal;">Dangal</span>
+				</div>
+				<img class="movie-class" src="img/taipei1/presentM1-class.jpg" alt="">
+
+				<div class="clear"></div>
+				<div class="movie-info">
+					上映日期：2017-03-24<br>
+					類　　型：劇情、歷史/傳記、勵志<br>
+					片　　長：2時41分<br>
+					導　　演：涅提帝瓦里(Nitesh Tiwari)<br>
+					演　　員：《三個傻瓜》阿米爾罕(Aamir Khan)、沙克希坦沃(Sakshi Tanwar)、《絕命21》法蒂娜薩納謝赫(Fatima Sana Shaikh)<br>
+					發行公司：車庫娛樂<br>
+					官方網站：
+					<span><a href="http://facebook.com/garageplay.tw" target="_blank">Link 1</a></span>
+					<span><a href="http://garageplay.tw" target="_blank">Link 2</a></span>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+
+		<div class="movie-description">
+
+				<h3>電影敘述</h3><br>
+
+<span class="prizeDes" style="color: #E34646;">
+★ 繼《三個傻瓜》《來自星星的傻瓜》後，「印度的良心」阿米爾罕再度出手，自製自演<br>
+★ 改編自不可思議的真人真事，父女情深聯手挑戰印度社會性別疆界<br>
+★ 榮獲印度電影觀眾獎 最佳電影、最佳導演、最佳男主角等三大獎<br>
+★ 榮登印度影史票房冠軍，全球勇破34億票房！打破寶萊塢電影美國、澳洲上映首周票房紀錄<br>
+★ Imdb 8.9分評選為影史百大佳片；爛番茄指數83%亦給予高度評價<br>
+★ 阿米爾罕為戲增重成百公斤熊爸，五個月訓練變肌肉猛男，身材百變，演技百變<br>
+★ 海外由迪士尼影業盛大發行<br>
+</span>
+
+	<br>
+	<p style="font-size: 24px; line-height: 25px; color: #E34646;">
+	「摔跤是男生在玩的」<br>
+	「妳覺得我們女兒會輸給男生嗎？」<br>
+	</p>
+
+	<br>
+	<p style="text-align: justify; text-justify:inter-ideograph; line-height: 30px; color: #E34646;">
+	改編自印度摔跤選手瑪哈維亞的傳奇感人故事，由印度天王 阿米爾罕主演。瑪哈維亞是摔跤金牌得主，卻因生活與體制問題而放棄摔跤夢。他一心一意能生個兒子，一圓當年未盡夢想。哪知命運弄人，多年來他膝下無子，卻有四位寶貝女兒。幾乎要放棄的他在偶然機緣下，發現兩個女兒不讓鬚眉的摔跤天分，開始訓練她們摔跤，過程酸甜苦辣，這幫父女怎麼面對來自四面八方的輿論、歧視？他們又真的獲得最後的勝利嗎？
+	<br>
+	電影中阿米爾罕從年輕演到老，身材從壯到胖，一度增肥到97公斤，體脂肪37%，五個月後又練回成肌肉猛男，體脂肪降到9.67%！
+	<br><br>
+	男尊女卑的印度社會，本片意圖打破僵化的性別刻板傳統，女性也能獲得命運自主的勵志故事。阿米爾罕再度自製自演，充滿對印度社會陋習的批判與省思，更有著一貫扣人心弦的動人旋律！
+	<br>
+	</p>
+		</div>
+		<div class="movie-media">
+			<div class="movie-media-screen">
+				<!--
+				<video class="movie-media-screen" id="showVideo" onclick="PauseOrNot()" controls>
+					<source src="video/presentM1-video1.mp4" type="video/mp4">
+					<source src="video/presentM1-video1.mp4" type="video/mp4">
+				</video>
+				-->
+				<img class="movie-media-screen" src="https://placem.at/things?w=904&h=400" alt="">
+				<img id="playIcon" src="img/video-play-icon.png" onclick="playIt()" >
+			</div>
+			<div class="movie-media-function">
+				<div class="movie-media-function-btn">
+					<button id="videoPlayerBtn" onclick="turnOnVideoPlayer()">預告片</button>
+					<button id="picPlayerBtn" onclick="turnOnPhotoPlayer">精彩劇照</button>
+				</div>
+				<div class="movie-media-function-pages">
+					<a href="#" id="pageUp"></a>
+					<a href="#" class="pagebox">1</a>
+					<a href="#" class="pagebox">2</a>
+					<a href="#" class="pagebox">3</a>
+					<a href="#" class="pagebox">4</a>
+					<a href="#" id="pageDown"></a>
+				</div>
+			</div>
+		</div>
+		<div class="movie-schedule">
+			<div class="branch-list">
+				<div class="branch-option" id="taipei1">
+					台北影城1
+				</div>
+				<div class="branch-option" id="taipei2">
+					台北影城2
+				</div>
+				<div class="branch-option" id="taipei3">
+					台北影城3
+				</div>
+				<div class="branch-option" id="kaohsiung1">
+					高雄影城1
+				</div>
+				<div class="branch-option" id="kaohsiung2">
+					高雄影城2
+				</div>
+			</div>
+			<div class="movie-time">
+				<h3>今日時刻</h3>
+				<div class="timetableArea">
+					<span class="singleTime" id="stNow1">10:20</span>
+					<span class="singleTime" id="stNow2">11:45</span>
+					<span class="singleTime" id="stNow3">12:40</span>
+					<span class="singleTime" id="stNow4">13:20</span>
+					<span class="singleTime" id="stNow5">14:50</span>
+					<span class="singleTime" id="stNow6">15:10</span>
+					<span class="singleTime" id="stNow7">16:50</span>
+					<span class="singleTime" id="stNow8">18:20</span>
+					<span class="singleTime" id="stNow9">19:10</span>
+					<span class="singleTime" id="stNow10">20:25</span>
+					<span class="singleTime" id="stNow11">21:20</span>
+					<span class="singleTime" id="stNow12">22:30</span>
+					<span class="singleTime" id="stNow13">23:45</span>
+					<span class="singleTime" id="stNow14">00:15</span>
+					<span class="singleTime" id="stNow15">00:30</span>
+				</div>
+			</div>
+			<div class="movie-time">
+				<h3>明日時刻</h3>
+				<div class="timetableArea">
+					<span class="singleTime" id="stFut1">10:20</span>
+					<span class="singleTime" id="stFut2">11:45</span>
+					<span class="singleTime" id="stFut3">12:40</span>
+					<span class="singleTime" id="stFut4">13:20</span>
+					<span class="singleTime" id="stFut5">14:50</span>
+					<span class="singleTime" id="stFut6">15:10</span>
+					<span class="singleTime" id="stFut7">16:50</span>
+					<span class="singleTime" id="stFut8">18:20</span>
+					<span class="singleTime" id="stFut9">19:10</span>
+					<span class="singleTime" id="stFut10">20:25</span>
+					<span class="singleTime" id="stFut11">21:20</span>
+					<span class="singleTime" id="stFut12">22:30</span>
+					<span class="singleTime" id="stFut13">23:45</span>
+					<span class="singleTime" id="stFut14">00:15</span>
+					<span class="singleTime" id="stFut15">00:30</span>
+				</div>
+			</div>
+
+			<div class="clear"></div>
+		</div>
+		
+		<div class="other-movie">
+			<p id="other-movie-title">其他上映中的電影</p><br>
+			<div class="movie-poster">
+				<a href=""><img src="https://placem.at/things?w=167&h=240&random=1" alt=""></a>
+				<div class="coverTitle">寶貝老闆</div>
+			</div>
+			<div class="movie-poster">
+				<a href=""><img src="https://placem.at/things?w=167&h=240&random=2" alt=""></a>
+				<div class="coverTitle">羅根</div>
+			</div>
+			<div class="movie-poster">
+				<a href=""><img src="https://placem.at/things?w=167&h=240&random=3" alt=""></a>
+				<div class="coverTitle">目擊者</div>
+			</div>
+			<div class="movie-poster">
+				<a href=""><img src="https://placem.at/things?w=167&h=240&random=4" alt=""></a>
+				<div class="coverTitle">美女與野獸</div>
+			</div>
+			<div class="movie-poster">
+				<a href=""><img src="https://placem.at/things?w=167&h=240&random=5" alt=""></a>
+				<div class="coverTitle">當他們認真編織時</div>
+			</div>
+
+			<div class="other-movie-buttom-area">
+				<div class="other-movie-buttom">
+					<
+				</div>
+				<div class="other-movie-buttom">
+					>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	<div class="footer">
+		<div class="recruitment">
+			<h3>人才招募</h3>
+			<table>
+					<tr>
+						<td id="demandCateName">線上</td>
+						<td id="demandCateCon">
+							<ul>
+								<li>前端工程師: 熟悉CSS / JavaScript / AJAX ...etc</li>
+								<li>後端工程師: API / 資料庫語言 ...etc</li>
+							</ul>
+						</td>
+					</tr>
+
+					<tr>
+						<td id="demandCateName">線下</td>
+						<td id="demandCateCon">
+							擴大徵才，誠邀各界高階幕僚、行銷、經營管理相關領域之將相人才加入
+						</td>
+					</tr>
+			</table>
+			<div id="btn_moreInfo"><a href="">更多資訊</a></div>
+		</div>
+
+		<div class="copyright">
+			<h3>版權宣告</h3>
+			<p>
+				Copyright © 2017 六角電影院 Inc. All rights reserved.<br>
+				其他電影宣傳品與簡介，屬原電影發行商所有
+			</p>
+
+		</div>
+
+		<div class="outLink">
+			<h3>外部連結</h3>
+
+			<div class="LinkContainer">
+				<a href=""> <div id="trapezoid_1"></div> </a>
+				<a href="http://www.ticket.com.tw/" target="_blank">
+					<div id="trapezoid_2">年代<br>售票</div>
+				</a>
+				<a href=""> <div id="trapezoid_3"></div> </a>
+			</div>
+
+			<div class="LinkContainer">
+				<a href=""> <div id="trapezoid_1"></div> </a>
+				<a href="http://tickets.books.com.tw/index/" target="_blank">
+					<div id="trapezoid_2">博客來<br>售票</div>
+				</a>
+				<a href=""> <div id="trapezoid_3"></div> </a>
+			</div>
+
+		</div>
+
+	</div>
+
+	</div> <!--wrap結束-->
+</body>
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>電影 - 將上映</title>
+	<link rel=stylesheet type="text/css" href="css/movie-page-future.css">
+	<script type="text/javascript" src="http://keleyi.com/keleyi/pmedia/jquery-1.9.1.min.js"></script>
+	<script>
+		//感應[至頂按鈕]
+		document.getElementById('rollButton').click(function()
+		{
+		        var elmnt = document.getElementsByClassName("header")[0];
+    			elmnt.scrollLeft = 0;
+    			elmnt.scrollTop = 0;
+    			/**/
+		});
+	</script>
+	<script type="text/javascript">
+
+	function turnOnVideoPlayer(){
+		//先關掉照片播放功能
+		//打開影片瀏覽器
+		var player = document.getElementsByClassName("movie-media-screen")[0];
+		player.style.display="block";
+	}
+
+	function turnOnPhotoPlayer(){
+		//關閉影片瀏覽器
+		var player = document.getElementById("showVideo");
+		player.style.display = "none";
+	}
+
+	function PauseOrNot() {
+		var player = document.getElementById("showVideo");
+		if(player.paused){
+			player.play();
+			document.getElementById("playIcon").style.display = "none";
+		}
+		else{
+			player.pause();
+			document.getElementById("playIcon").style.display = "block";
+		}
+	}
+
+	function playIt() {
+		var player = document.getElementById("showVideo");
+		player.play();
+		document.getElementById("playIcon").style.display = "none";
+	}
+
+
+
+	</script>
+
+</script>
+
+
+</head>
+<body>
+	<div class="wrap">
+		<div class="header">
+			<div class="logo">
+				<a href="index.html">
+					<img src="img/LogoPic.png" alt="">
+				</a>
+				<h1 style="display: none;">即將上映 電影 雷神索爾3</h1>
+			</div>
+
+			<div class="functionBar">
+				<ul>
+					<li> <a id="level_1" href="page_timetable.html">時刻表</a> </li>
+					<li> <a id="level_1" href="movie-offer.html">優惠方案</a> </li>
+					<li> <a id="level_1" href="#" style="border-bottom: 5px solid #F47C7C;">電影列表</a>
+						<ul>
+							<li> <a id="level_2" href="movie-all-now.html">現正熱映</a> </li>
+							<li> <a id="level_2" href="movie-all-future.html">即將上映</a> </li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+
+			<a href="" id="rollButton">
+				<img id="rollPic" src="img/arrowUp.png" alt=""><br>
+				<span id="rollCon">UP</span>
+			</a>
+		</div>
+
+		<div class="movie-detail">
+			<div class="movie-pic">
+				<img id="show-movie-pic" src="https://placem.at/things?w=185&h=283" alt="">
+			</div>
+			<div class="movie-frame">
+				<div class="movie-name">
+					雷神索爾3：諸神黃昏<br>
+					<span style="font-size: 15px; font-weight: normal;">Thor: Ragnarok</span>
+				</div>
+				<img class="movie-class" src="img/upcomingM1-class.jpg" alt="">
+				<div class="clear"></div>
+				<div class="movie-info">
+					上映日期：2017-10-26 <br>
+					類　　型：動作、冒險 <br>
+					片　　長：未提供 <br>
+					導　　演：塔伊加維迪提 <br>
+					演　　員：克里斯漢斯沃、湯姆希德斯頓、凱特布蘭琪、馬克魯法洛、安東尼霍普金斯 <br>
+					發行公司：漫威影業 <br>
+					官方網站：<span><a href="https://www.facebook.com/MarvelStudioTaiwan/" target="_blank">Link 1</a></span>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+
+		<div class="movie-description">
+
+			<h3>電影敘述</h3><br>
+
+<span class="prizeDes" style="color: #E34646;">
+索爾被監禁在一個沒有辦法使用雷神之鎚的平行宇宙，他必須要與時間賽跑，試圖回到阿斯嘉阻止善惡對決所造成的諸神黃昏，也就是阿斯嘉文明的盡頭、索爾家鄉的毀滅，而這一切都是冥后海拉所主導。<br>
+<br>
+在諸神黃昏毀滅世界之前，他必須要在競技場上面對曾經的好夥伴浩克，這樣的對決會帶來什麼後果呢？<br>
+</span>
+		</div>
+		<div class="movie-media">
+			<div class="movie-media-screen">
+				<!--
+				<video class="movie-media-screen" id="showVideo" onclick="PauseOrNot()" controls>
+					<source src="video/upcomingM1.mp4" type="video/mp4">
+				</video>
+				<img id="playIcon" src="img/video-play-icon.png" onclick="playIt()" >
+				-->
+				<img class="movie-media-screen" src="https://placem.at/things?w=904&h=400" alt="">
+			</div>
+			<div class="movie-media-function">
+				<div class="movie-media-function-btn">
+					<button id="videoPlayerBtn" onclick="turnOnVideoPlayer()">預告片</button>
+					<button id="picPlayerBtn" onclick="turnOnPhotoPlayer">精彩劇照</button>
+				</div>
+				<div class="movie-media-function-pages">
+					<a href="#" id="pageUp"></a>
+					<a href="#" class="pagebox">1</a>
+					<a href="#" class="pagebox">2</a>
+					<a href="#" class="pagebox">3</a>
+					<a href="#" class="pagebox">4</a>
+					<a href="#" id="pageDown"></a>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="movie-inform-box">
+			<span id="launchDate">上映日期：2017/10/26</span>
+			<span id="welcomeBack">敬請期待</span>
+			<a href="movie-all-now.html" class="gotoPresentList">去看看上映中的電影➥</a>
+		</div>
+
+		<div class="other-upcoming-movie">
+			<p id="other-movie-title">其他即將上映電影</p><br>
+			<div class="movie-poster">
+				<a href=""><img src="https://placem.at/things?w=140&h=240&random=1" alt=""></a>
+				<div class="coverTitle">雷神索爾3</div>
+			</div>
+			<div class="movie-poster">
+				<a href=""><img src="https://placem.at/things?w=140&h=240&random=2" alt=""></a>
+				<div class="coverTitle">金權性內幕</div>
+			</div>
+			<div class="movie-poster">
+				<a href=""><img src="https://placem.at/things?w=140&h=240&random=3" alt=""></a>
+				<div class="coverTitle">星際異攻隊2</div>
+			</div>
+			<div class="movie-poster">
+				<a href=""><img src="https://placem.at/things?w=140&h=240&random=4" alt=""></a>
+				<div class="coverTitle">科羅索巨獸</div>
+			</div>
+			<div class="movie-poster">
+				<a href=""><img src="https://placem.at/things?w=140&h=240&random=5" alt=""></a>
+				<div class="coverTitle">逃出絕命鎮</div>
+			</div>
+			<div class="movie-poster">
+				<a href=""><img src="https://placem.at/things?w=140&h=240&random=6" alt=""></a>
+				<div class="coverTitle">老師有問題</div>
+			</div>
+			<div class="other-movie-buttom-area">
+				<div class="other-movie-buttom">
+					<
+				</div>
+				<div class="other-movie-buttom">
+					>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+
+	<div class="footer">
+		<div class="recruitment">
+			<h3>人才招募</h3>
+			<table>
+					<tr>
+						<td id="demandCateName">線上</td>
+						<td id="demandCateCon">
+							<ul>
+								<li>前端工程師: 熟悉CSS / JavaScript / AJAX ...etc</li>
+								<li>後端工程師: API / 資料庫語言 ...etc</li>
+							</ul>
+						</td>
+					</tr>
+
+					<tr>
+						<td id="demandCateName">線下</td>
+						<td id="demandCateCon">
+							擴大徵才，誠邀各界高階幕僚、行銷、經營管理相關領域之將相人才加入
+						</td>
+					</tr>
+			</table>
+			<div id="btn_moreInfo"><a href="">更多資訊</a></div>
+		</div>
+
+		<div class="copyright">
+			<h3>版權宣告</h3>
+			<p>
+				Copyright © 2017 六角電影院 Inc. All rights reserved.<br>
+				其他電影宣傳品與簡介，屬原電影發行商所有
+			</p>
+
+		</div>
+
+		<div class="outLink">
+			<h3>外部連結</h3>
+
+			<div class="LinkContainer">
+				<a href=""> <div id="trapezoid_1"></div> </a>
+				<a href="http://www.ticket.com.tw/" target="_blank">
+					<div id="trapezoid_2">年代<br>售票</div>
+				</a>
+				<a href=""> <div id="trapezoid_3"></div> </a>
+			</div>
+
+			<div class="LinkContainer">
+				<a href=""> <div id="trapezoid_1"></div> </a>
+				<a href="http://tickets.books.com.tw/index/" target="_blank">
+					<div id="trapezoid_2">博客來<br>售票</div>
+				</a>
+				<a href=""> <div id="trapezoid_3"></div> </a>
+			</div>
+
+		</div>
+
+	</div>
+
+	</div> <!--wrap結束-->
+</body>
+</html>
